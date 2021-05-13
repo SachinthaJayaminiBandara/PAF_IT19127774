@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="PAF_Lab9/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="PAF_Lab9/WebContent/WEB-INF/lib/mysql-connector-java-5.1.48.jar"/>
+	<classpathentry kind="lib" path="C:/Users/asus/Downloads/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/asus/Downloads/javax.servlet-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/xampp/phpMyAdmin/tomcat/bin/bootstrap.jar"/>
+	<classpathentry kind="lib" path="C:/xampp/phpMyAdmin/tomcat/bin/commons-daemon.jar"/>
+	<classpathentry kind="lib" path="C:/xampp/phpMyAdmin/tomcat/bin/tomcat-juli.jar"/>
+	<classpathentry kind="output" path="PAF_Lab9/build/classes"/>
+</classpath>
