@@ -27,7 +27,21 @@ if (status != true)
  return; 
  } 
 // If valid------------------------
- $("#formItem").submit(); 
+//$("#formItem").submit();
+var type = ($("#hidGrant_Application_IDSave").val() == "") ? "POST" : "PUT";
+
+$.ajax(
+{ 
+ url : "APIitm", 
+ type : type, 
+ data : $("#formItem").serialize(), 
+ dataType : "text", 
+ complete : function(response, status) 
+ { 
+ onItemSaveComplete(response.responseText, status); 
+ } 
+})
+ 
 }); 
 // UPDATE==========================================
 $(document).on("click", ".btnUpdate", function(event) 
@@ -41,6 +55,33 @@ $(document).on("click", ".btnUpdate", function(event)
  $("#Budget").val($(this).closest("tr").find('td:eq(5)').text());  
  $("#Introduction").val($(this).closest("tr").find('td:eq(6)').text());  
 }); 
+function onItemSaveComplete(response, status)
+{ 
+  var resultSet = JSON.parse(response);
+if (resultSet.status.trim() == "success") 
+{ 
+ $("#alertSuccess").text("Successfully saved."); 
+ $("#alertSuccess").show(); 
+$("#divItemsGrid").html(resultSet.data); 
+} else if (resultSet.status.trim() == "error") 
+{ 
+ $("#alertError").text(resultSet.data); 
+ $("#alertError").show(); 
+}
+
+else if (status == "error")
+{ 
+ $("#alertError").text("Error while saving."); 
+ $("#alertError").show(); 
+} else
+{ 
+ $("#alertError").text("Unknown error while saving.."); 
+ $("#alertError").show(); 
+}
+$("#hidItemIDSave").val("");
+$("#formItem")[0].reset()
+}
+
 // CLIENT-MODEL================================================================
 function validateItemForm() 
 { 
@@ -81,4 +122,32 @@ if ($("#Introduction").val().trim() == "")
  return "Insert Introduction."; 
  } 
 return true; 
+}
+
+
+function onItemSaveComplete(response, status)
+{ 
+  var resultSet = JSON.parse(response);
+if (resultSet.status.trim() == "success") 
+{ 
+ $("#alertSuccess").text("Successfully saved."); 
+ $("#alertSuccess").show(); 
+$("#divItemsGrid").html(resultSet.data); 
+} else if (resultSet.status.trim() == "error") 
+{ 
+ $("#alertError").text(resultSet.data); 
+ $("#alertError").show(); 
+}
+
+else if (status == "error")
+{ 
+ $("#alertError").text("Error while saving."); 
+ $("#alertError").show(); 
+} else
+{ 
+ $("#alertError").text("Unknown error while saving.."); 
+ $("#alertError").show(); 
+}
+$("#hidItemIDSave").val("");
+$("#formItem")[0].reset()
 }

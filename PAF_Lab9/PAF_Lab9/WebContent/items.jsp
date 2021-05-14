@@ -4,7 +4,7 @@
 <%@page import="com.Item"%>
 <%
 //Save---------------------------------
-if (request.getParameter("Grant_Application_ID") != null) { 
+/*if (request.getParameter("Grant_Application_ID") != null) { 
 Item itemObj = new Item(); 
 String stsMsg = ""; 
 	//Insert--------------------------
@@ -41,6 +41,7 @@ String stsMsg =
 itemObj.deleteGrants(request.getParameter("hidGrant_Application_IDDelete")); 
 session.setAttribute("statusMsg", stsMsg); 
 }
+*/
 %>
 
 <html>

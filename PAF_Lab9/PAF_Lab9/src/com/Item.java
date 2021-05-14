@@ -135,6 +135,7 @@ public class Item {
 	 output += "<td>" + Budget   + "</td>";
 	 output += "<td>" + Introduction  + "</td>";
 	 
+	 
 	 // buttons
 	 output += "<td>"
 	 + "<input name='btnUpdate' "
@@ -144,10 +145,22 @@ public class Item {
 	 + "<td><form method='post' action='items.jsp'>"
 	 + "<input name='btnRemove' "
 	 + " type='submit' class='btn btn-outline-danger' value='Remove'>"
+	
+	 "<td><input name='btnRemove' type='button' value='Remove' 
+	 class='btnRemove btn btn-danger' data-itemid='" + itemID + "'>" + 
+	 "</td>"
 	 + "<input name='hidGrant_Application_IDDelete' type='hidden' "
 	 + " value='" + id + "'>" + "</form></td></tr>";
+		
+	 //btn lab 10
+	 //"<td><input name='btnRemove' type='button' value='Remove' 
+	 //class='btnRemove btn btn-danger' data-itemid='" + itemID + "'>" + 
+	 //"</td>"
 
+	 //"<td><input name='btnUpdate' type='button' value='Update' "
+	//+ "class='btnUpdate btn btn-secondary' data-itemid='" + itemID + "'></td>"
 	 }
+	 
 	 con.close();
 	 // Complete the html table
 	 output += "</table>";
@@ -224,14 +237,16 @@ public class Item {
 	//execute the statement
 	 preparedStmt.execute();
 	 con.close();
-	 output = "Grant details update successfully.";
+	 String newItems = updateGrants(); 
+	 output ="{\"status\":\"success\", \"data\": \"" + newItems + "\"}"; 
 	 }
 	catch (Exception e)
 	 {
-	 output = "An error occurred while updating the grant details.";
+	 output ="{\"status\":\"error\", \"data\":"
+			 \"Error while updating the Grant.\"}"; 
 	 System.err.println(e.getMessage());
-	 e.printStackTrace();
-	 }
+	 //e.printStackTrace();
+	 
 	return output;
 	}
 
