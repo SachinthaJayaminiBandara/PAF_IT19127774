@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class APIitm
  */
+@WebServlet("/APIitm")
 public class APIitm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
