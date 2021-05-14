@@ -52,6 +52,7 @@ public class APIitm extends HttpServlet {
 			 throws ServletException, IOException 
 			{ 
 			 Map paras = getParasMap(request); 
+			 
 			 String output = itemObj.updateGrants(paras.get("hidGrant_Application_IDSave").toString(), 
 			 paras.get("Grant_Application_ID").toString(), 
 			 paras.get("Title").toString(), 
@@ -70,9 +71,25 @@ public class APIitm extends HttpServlet {
 			 throws ServletException, IOException 
 			{ 
 			 Map paras = getParasMap(request); 
-			 String output = itemObj.deleteItem(paras.get("itemID").toString()); 
+			 
+			 String output = itemObj.deleteGrants(paras.get("Grant_Application_ID").toString()); 
 			response.getWriter().write(output); 
+			
 			}
 	 
-
+	
+	// Convert request parameters to a Map
+	private static Map getParasMap(HttpServletRequest request) 
+	{ 
+	 Map<String, String> map = new HashMap<String, String>(); 
+	try
+	 { 
+	 Scanner scanner = new Scanner(request.getInputStream(), "UTF-8"); 
+	 String queryString = scanner.hasNext() ? 
+	 scanner.useDelimiter("\\A").next() : ""; 
+	 scanner.close(); 
+	 String[] params = queryString.split("&"); 
+	 for (String param : params) 
+	 
 }
+	}
