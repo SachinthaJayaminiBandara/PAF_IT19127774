@@ -36,13 +36,41 @@ public class APIitm extends HttpServlet {
 			 throws ServletException, IOException 
 			{ 
 			 String output = itemObj.insertGrantApplication(request.getParameter("Grant_Application_ID"), 
-			 request.getParameter("Title"), 
+			request.getParameter("Title"), 
 			request.getParameter("Full_Name"), 
 			request.getParameter("Email"), 
 			request.getParameter("Phone"), 
 			request.getParameter("Research_category"), 
 			request.getParameter("Budget"),  
 			request.getParameter("Introduction")); 
+			
+			response.getWriter().write(output);
+			
+			
+			}
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) 
+			 throws ServletException, IOException 
+			{ 
+			 Map paras = getParasMap(request); 
+			 String output = itemObj.updateGrants(paras.get("hidGrant_Application_IDSave").toString(), 
+			 paras.get("Grant_Application_ID").toString(), 
+			 paras.get("Title").toString(), 
+			 paras.get("Full_Name").toString(),
+			 paras.get("Email").toString(), 
+			 paras.get("Phone").toString(), 
+			 paras.get("Research_category").toString(), 
+			 paras.get("Budget").toString(),
+			 paras.get("Introduction").toString()); 
+			
+			 
+			 response.getWriter().write(output); 
+			} 
+	
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) 
+			 throws ServletException, IOException 
+			{ 
+			 Map paras = getParasMap(request); 
+			 String output = itemObj.deleteItem(paras.get("itemID").toString()); 
 			response.getWriter().write(output); 
 			}
 	 
